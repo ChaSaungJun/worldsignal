@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" width="1400" height="800">
+  <rect width="1400" height="800" fill="#e9ecef"/>
+  <g fill="none" stroke="#b2b2be" stroke-width="4">
+    <rect x="560" y="260" width="280" height="200" rx="16"/>
+    <circle cx="640" cy="330" r="28"/>
+    <path d="M580 440 L680 360 L760 420 L810 380 L840 440"/>
+  </g>
+  <text x="700" y="560" text-anchor="middle" fill="#8a8a94" font-family="'Segoe UI','Malgun Gothic',sans-serif" font-size="44" font-weight="600">글 준비 중</text>
+</svg>

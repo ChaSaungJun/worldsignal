@@ -1,0 +1,306 @@
+/* ==========================================================================
+   World Signal 공통 스타일
+   참조 디자인(GeneratePress 기반)의 색상·레이아웃을 재현한 스타일시트입니다.
+   대문(index.html)과 포스팅 페이지(posts/*.html)가 함께 사용합니다.
+   ========================================================================== */
+
+/* ===== 색상 변수 (참조 사이트와 동일) ===== */
+:root {
+  --contrast: #222222;   /* 본문 글자 */
+  --contrast-2: #575760; /* 보조 글자(날짜·메타) */
+  --contrast-3: #b2b2be; /* 옅은 글자 */
+  --base: #f0f0f0;       /* 구분선·표 머리글 배경 */
+  --base-2: #f7f8f9;     /* 페이지 배경 */
+  --base-3: #ffffff;     /* 카드·헤더 배경 */
+  --accent: #1e73be;     /* 액센트 파랑 */
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background-color: var(--base-2);
+  color: var(--contrast);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+a { color: var(--accent); }
+a:hover, a:focus { color: var(--contrast); }
+img { max-width: 100%; height: auto; }
+
+.grid-container { max-width: 1200px; margin: 0 auto; }
+
+/* ===== 상단 헤더 ===== */
+.site-header { background-color: var(--base-3); }
+
+.inside-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 20px 40px;
+}
+
+.main-title { margin: 0; font-size: 25px; font-weight: 700; }
+.main-title a { color: var(--contrast); text-decoration: none; }
+.main-title a:hover { color: var(--contrast); }
+
+.main-navigation ul { list-style: none; margin: 0; padding: 0; display: flex; }
+.main-navigation a {
+  display: block;
+  padding: 10px 0 10px 25px;
+  color: var(--contrast);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+}
+.main-navigation a:hover { color: var(--accent); }
+
+/* ===== 본문 70% + 사이드바 30% 레이아웃 ===== */
+.site-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+}
+.content-area { width: 70%; }
+.sidebar { width: 30%; }
+
+/* 흰 카드 (참조의 separate-containers 방식) */
+.inside-article,
+.widget {
+  background-color: var(--base-3);
+  padding: 40px;
+  margin-bottom: 20px;
+}
+
+/* ===== 사이드바 위젯 ===== */
+.widget { padding: 30px; }
+.widget-title { margin: 0 0 15px; font-size: 20px; }
+
+.recent-posts { list-style: none; margin: 0; padding: 0; }
+.recent-posts li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--base);
+}
+.recent-posts li:last-child { border-bottom: 0; padding-bottom: 0; }
+.recent-posts a { display: block; line-height: 1.5; font-size: 15px; }
+.recent-post-date { display: block; font-size: 13px; color: var(--contrast-2); margin-top: 4px; }
+
+/* ===== 대문: 소개 문구 ===== */
+.tagline {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0 0 40px;
+}
+.section-title { text-align: center; font-size: 32px; margin: 0 0 8px; }
+.section-desc { text-align: center; color: var(--contrast-2); margin: 0 0 40px; }
+
+/* ===== 대문: 게시글 카드 그리드 ===== */
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.post-card { display: flex; flex-direction: column; }
+
+.post-card-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.post-card-title { font-size: 19px; line-height: 1.4; margin: 14px 0 6px; }
+.post-card-title a { color: var(--contrast); text-decoration: none; }
+.post-card-title a:hover { color: var(--accent); }
+
+.post-card-author { font-size: 14px; color: var(--accent); }
+.post-card-date { display: block; font-size: 14px; color: var(--contrast-2); }
+
+.post-card-excerpt {
+  font-size: 15px;
+  color: var(--contrast-2);
+  margin: 10px 0;
+  flex-grow: 1; /* 카드 높이를 맞춰 '계속 읽기'가 바닥에 정렬되도록 */
+}
+.post-card-more { margin: 0; font-size: 15px; font-weight: 600; }
+
+/* 준비 중인 자리표시 카드 */
+.post-card.placeholder { opacity: 0.65; }
+.post-card.placeholder .post-card-title { color: var(--contrast-2); }
+
+/* ===== 대문: CTA 섹션 (참조의 .cta-section 그대로) ===== */
+.cta-section {
+  background: #f5f5f5;
+  padding: 80px 20px;
+  text-align: center;
+  margin-top: 48px;
+}
+.cta-section h2 { font-size: 28px; margin: 0 0 10px; }
+.cta-section p { font-size: 16px; margin: 0 0 30px; color: #666; }
+
+.cta-button {
+  display: inline-block;
+  padding: 14px 30px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+.cta-button:hover { background-color: #333; color: #fff; }
+
+/* ===== 포스팅: 대표 이미지 (카드 가장자리까지 꽉 차게) ===== */
+.featured-image { margin: -40px -40px 30px; }
+.featured-image img { display: block; width: 100%; }
+
+/* ===== 포스팅: 제목·메타 ===== */
+.entry-title { font-size: 34px; line-height: 1.3; margin: 0 0 10px; }
+.entry-meta { color: var(--contrast-2); font-size: 14px; margin-bottom: 35px; }
+.entry-meta a { color: var(--contrast-2); }
+
+/* ===== 포스팅: 본문 요소 ===== */
+.entry-content h2 { font-size: 26px; line-height: 1.4; margin: 45px 0 15px; }
+.entry-content h3 { font-size: 21px; line-height: 1.4; margin: 35px 0 12px; }
+.entry-content p { margin: 0 0 1.5em; }
+
+.entry-content figure { margin: 30px 0; }
+.entry-content figcaption {
+  text-align: center;
+  font-size: 14px;
+  color: var(--contrast-2);
+  margin-top: 8px;
+}
+
+.entry-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 15px;
+}
+.entry-content th,
+.entry-content td {
+  border: 1px solid #ddd;
+  padding: 10px 12px;
+  text-align: left;
+}
+.entry-content th { background-color: var(--base); }
+
+/* ===== 포스팅: 애드센스 광고 영역 ===== */
+.ad-slot { margin: 30px 0; }
+
+/* ===== 포스팅: 아이콘 달린 둥근 버튼 (참조의 ub-button 재현) ===== */
+.ws-button-wrap { margin: 35px 0; }
+
+.ws-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  padding: 14px 10px;
+  background-color: #f0fbf9;
+  color: #5a99c3;
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.ws-button:hover { background-color: #0c284c; color: #f0fbf9; }
+.ws-button svg { width: 30px; height: 30px; flex-shrink: 0; }
+
+/* ===== 포스팅: 이전/다음 글 네비게이션 ===== */
+.post-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 1px solid var(--base);
+  font-size: 15px;
+}
+.post-navigation a { text-decoration: none; font-weight: 600; }
+.post-navigation a:hover { text-decoration: underline; }
+.nav-previous { text-align: left; }
+.nav-next { text-align: right; }
+
+/* ===== 푸터 (참조의 gi-footer 스타일 그대로) ===== */
+.gi-footer-wrap {
+  background: transparent;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+.gi-footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 16px 18px;
+  text-align: center;
+}
+.gi-footer__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px 10px;
+}
+.gi-footer__list a {
+  display: block;
+  padding: 10px 6px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.65);
+  border-radius: 8px;
+}
+.gi-footer__list a:hover {
+  color: rgba(0, 0, 0, 0.95);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.gi-footer__divider {
+  margin: 18px auto 12px;
+  height: 1px;
+  max-width: 420px;
+  background: rgba(0, 0, 0, 0.12);
+}
+.gi-footer__copyright {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/* ===== 반응형: 태블릿 ===== */
+@media (max-width: 900px) {
+  .post-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .site-content { flex-direction: column; padding: 15px; }
+  .content-area, .sidebar { width: 100%; }
+  .inside-article { padding: 30px; }
+  .featured-image { margin: -30px -30px 25px; }
+  .inside-header { padding: 15px 30px; }
+  .entry-title { font-size: 27px; }
+  .section-title { font-size: 27px; }
+  .ws-button { font-size: 19px; }
+}
+
+/* ===== 반응형: 모바일 ===== */
+@media (max-width: 600px) {
+  .post-grid { grid-template-columns: 1fr; }
+  .cta-section { padding: 60px 15px; }
+  .gi-footer { padding-top: 22px; }
+  .gi-footer__list { flex-direction: column; gap: 6px; }
+  .gi-footer__list a { padding: 12px 8px; font-size: 15px; }
+}

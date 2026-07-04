@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" width="1400" height="800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f6f6a"/>
+      <stop offset="1" stop-color="#0c284c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="800" fill="url(#bg)"/>
+  <circle cx="1180" cy="140" r="240" fill="#ffffff" opacity="0.05"/>
+  <circle cx="220" cy="700" r="200" fill="#ffffff" opacity="0.05"/>
+  <!-- 택배 상자 -->
+  <g stroke="#ffffff" stroke-width="5" fill="none" opacity="0.9">
+    <path d="M560 300 L700 240 L840 300 L840 440 L700 500 L560 440 Z"/>
+    <path d="M560 300 L700 360 L840 300"/>
+    <path d="M700 360 L700 500"/>
+  </g>
+  <!-- 비행 경로 -->
+  <g stroke="#ffffff" stroke-width="4" fill="none" opacity="0.45" stroke-dasharray="14 12">
+    <path d="M280 380 C 380 250, 520 240, 610 275"/>
+    <path d="M1120 400 C 1020 270, 900 250, 800 280"/>
+  </g>
+  <text x="700" y="600" text-anchor="middle" fill="#ffffff" font-family="'Segoe UI','Malgun Gothic',sans-serif" font-size="72" font-weight="700">해외직구 관세 가이드</text>
+  <text x="700" y="660" text-anchor="middle" fill="#ffffff" opacity="0.75" font-family="'Segoe UI','Malgun Gothic',sans-serif" font-size="30">면세 기준부터 합산과세까지 · World Signal</text>
+</svg>

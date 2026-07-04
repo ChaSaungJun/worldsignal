@@ -4,9 +4,119 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>World Signal — 국내외 최신 정보</title>
+  <meta name="description" content="세계의 신호를 가장 빠르게 전합니다. 국내외 최신 정보를 다루는 블로그 World Signal입니다.">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <h1>Hello, World Signal — 국내외 최신 정보 노트</h1>
-  <p>세계의 신호를 가장 빠르게 전합니다.</p>
+
+  <!-- ===== 상단 헤더 ===== -->
+  <header class="site-header">
+    <div class="inside-header grid-container">
+      <p class="main-title"><a href="index.html">World Signal</a></p>
+      <nav class="main-navigation" aria-label="기본 메뉴">
+        <ul>
+          <li><a href="index.html">홈</a></li>
+          <li><a href="about.html">사이트 소개</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== 본문 + 사이드바 ===== -->
+  <div class="site-content grid-container">
+
+    <div class="content-area">
+      <main class="site-main">
+        <article class="inside-article">
+          <div class="entry-content">
+
+            <h4 class="tagline">세계의 신호를 가장 빠르게 전합니다</h4>
+
+            <h2 class="section-title" id="latest">최신</h2>
+            <p class="section-desc">새롭게 업데이트된 콘텐츠</p>
+
+            <!-- 게시글 카드 그리드: 새 글을 올릴 때 아래 카드 하나를 복사해서 맨 앞에 추가하세요 -->
+            <section class="post-grid">
+
+              <article class="post-card">
+                <div class="post-card-image">
+                  <a href="posts/overseas-customs-guide.html"><img src="assets/img/thumb-customs.svg" alt="해외직구 관세 가이드 대표 이미지"></a>
+                </div>
+                <h2 class="post-card-title"><a href="posts/overseas-customs-guide.html">해외직구 관세·면세 기준 총정리 — 150달러와 200달러의 차이</a></h2>
+                <span class="post-card-author">World Signal</span>
+                <time class="post-card-date" datetime="2026-07-04">7월 4, 2026</time>
+                <p class="post-card-excerpt">해외직구에서 가장 헷갈리는 관세를 한 번에 정리했습니다. 면세 기준 150달러와 200달러의 차이, 목록통관 구분, 합산과세 주의사항까지.</p>
+                <p class="post-card-more"><a href="posts/overseas-customs-guide.html">계속 읽기 →</a></p>
+              </article>
+
+              <article class="post-card">
+                <div class="post-card-image">
+                  <a href="posts/sample-post.html"><img src="assets/img/thumb-sample.svg" alt="World Signal을 시작합니다 대표 이미지"></a>
+                </div>
+                <h2 class="post-card-title"><a href="posts/sample-post.html">World Signal을 시작합니다 — 새 블로그를 소개합니다</a></h2>
+                <span class="post-card-author">World Signal</span>
+                <time class="post-card-date" datetime="2026-07-04">7월 4, 2026</time>
+                <p class="post-card-excerpt">국내외 최신 정보를 빠르고 정확하게 전하는 블로그 World Signal이 문을 열었습니다. 첫 글에서 앞으로 다룰 주제와 글의 구성을 소개합니다.</p>
+                <p class="post-card-more"><a href="posts/sample-post.html">계속 읽기 →</a></p>
+              </article>
+
+              <article class="post-card placeholder" aria-hidden="true">
+                <div class="post-card-image">
+                  <img src="assets/img/thumb-placeholder.svg" alt="">
+                </div>
+                <h2 class="post-card-title">다음 글을 준비 중입니다</h2>
+                <span class="post-card-author">World Signal</span>
+                <span class="post-card-date">곧 공개</span>
+                <p class="post-card-excerpt">새로운 소식이 준비되는 대로 이 자리에 올라옵니다.</p>
+              </article>
+
+            </section>
+
+            <!-- CTA 섹션 -->
+            <div class="cta-section">
+              <h2>더 알고싶으신가요?</h2>
+              <p>World Signal이 어떤 블로그인지 궁금하시다면 소개 페이지를 확인해 보세요.</p>
+              <a href="about.html" class="cta-button">사이트 소개 보기</a>
+            </div>
+
+          </div>
+        </article>
+      </main>
+    </div>
+
+    <!-- 오른쪽 사이드바 -->
+    <aside class="sidebar" aria-label="사이드바">
+      <div class="widget">
+        <h2 class="widget-title">최신 글</h2>
+        <!-- 새 글을 올릴 때 아래 목록 맨 위에 한 줄 추가하세요 -->
+        <ul class="recent-posts">
+          <li>
+            <a href="posts/overseas-customs-guide.html">해외직구 관세·면세 기준 총정리 — 150달러와 200달러의 차이</a>
+            <span class="recent-post-date">2026년 7월 4일</span>
+          </li>
+          <li>
+            <a href="posts/sample-post.html">World Signal을 시작합니다 — 새 블로그를 소개합니다</a>
+            <span class="recent-post-date">2026년 7월 4일</span>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- ===== 푸터 ===== -->
+  <footer class="gi-footer-wrap" role="contentinfo">
+    <div class="gi-footer">
+      <nav aria-label="푸터 메뉴">
+        <ul class="gi-footer__list">
+          <li><a href="index.html">홈</a></li>
+          <li><a href="about.html">사이트 소개</a></li>
+        </ul>
+      </nav>
+      <div class="gi-footer__divider" aria-hidden="true"></div>
+      <p class="gi-footer__copyright">© 2026 <strong>World Signal</strong>. All rights reserved.</p>
+    </div>
+  </footer>
+
 </body>
 </html>
