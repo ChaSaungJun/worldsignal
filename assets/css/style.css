@@ -199,12 +199,13 @@ img { max-width: 100%; height: auto; }
 
 /* 애드센스 코드가 들어갈 자리 표시 (실제 코드로 교체 전까지 사용) */
 .ad-placeholder {
-  padding: 40px 10px;
-  border: 3px dashed var(--contrast-3);
+  padding: 50px 10px;
+  border: 4px dashed var(--contrast-2);
   text-align: center;
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--contrast-2);
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--contrast);
   background-color: var(--base-2);
 }
 
@@ -305,6 +306,7 @@ img { max-width: 100%; height: auto; }
   .entry-title { font-size: 27px; }
   .section-title { font-size: 27px; }
   .ws-button { font-size: 19px; }
+  .ad-placeholder { font-size: 26px; padding: 35px 10px; }
 }
 
 /* ===== 반응형: 모바일 ===== */
