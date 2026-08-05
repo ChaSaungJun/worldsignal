@@ -168,10 +168,13 @@
     </div>
   </footer>
 
+  <!-- ===== 중앙 데이터 및 공통 렌더러 스크립트 ===== -->
+  <script src="assets/js/site-data.js"></script>
+  <script src="assets/js/site-render.js"></script>
+
   <!-- ===== 카테고리 필터링 및 6개 게시글 정렬 스크립트 ===== -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const categoryBtns = document.querySelectorAll('.category-btn');
       const postGrid = document.querySelector('.post-grid');
       const realCards = Array.from(document.querySelectorAll('.post-card:not(.placeholder)'));
       const placeholderCards = Array.from(document.querySelectorAll('.post-card.placeholder'));
@@ -187,26 +190,24 @@
       realCards.forEach(card => postGrid.appendChild(card));
       placeholderCards.forEach(card => postGrid.appendChild(card));
 
-      // 메인 홈(카테고리 구분 없음): 빠른 날짜 순으로 최대 6개 게시글(부족 시 플레이스홀더 채움) 나열
       function showLatestSixAllCategories() {
+        const categoryBtns = document.querySelectorAll('.category-btn');
         categoryBtns.forEach(btn => btn.classList.remove('active'));
 
         const allCards = Array.from(document.querySelectorAll('.post-card'));
         allCards.forEach(card => card.classList.add('is-hidden'));
 
-        // 최신 글 상위 최대 6개 선택
         const visibleRealCards = realCards.slice(0, 6);
         visibleRealCards.forEach(card => card.classList.remove('is-hidden'));
 
-        // 6개 중 부족한 수만큼 플레이스홀더 카드로 채우기
         const neededPlaceholders = 6 - visibleRealCards.length;
         if (neededPlaceholders > 0) {
           placeholderCards.slice(0, neededPlaceholders).forEach(card => card.classList.remove('is-hidden'));
         }
       }
 
-      // 특정 카테고리(news, ent 등) 필터링
       function filterCategory(category) {
+        const categoryBtns = document.querySelectorAll('.category-btn');
         categoryBtns.forEach(btn => {
           if (btn.getAttribute('data-category') === category) {
             btn.classList.add('active');
@@ -226,30 +227,30 @@
         });
       }
 
-      categoryBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          const cat = this.getAttribute('data-category');
+      // 동적으로 생성된 category-btn에 이벤트 바인딩
+      const categoryBarWrap = document.querySelector('.category-bar-wrap');
+      if (categoryBarWrap) {
+        categoryBarWrap.addEventListener('click', function(e) {
+          const btn = e.target.closest('.category-btn');
+          if (!btn) return;
+
+          const cat = btn.getAttribute('data-category');
           e.preventDefault();
-          if (cat === 'ent') {
-            history.pushState(null, null, './#ent');
-            filterCategory('ent');
-          } else if (cat === 'news') {
-            history.pushState(null, null, './#news');
-            filterCategory('news');
+          if (cat) {
+            history.pushState(null, null, './#' + cat);
+            filterCategory(cat);
           } else {
             history.pushState(null, null, './');
             showLatestSixAllCategories();
           }
         });
-      });
+      }
 
       // 페이지 접속 시 초기 동작
-      if (window.location.hash === '#ent') {
-        filterCategory('ent');
-      } else if (window.location.hash === '#news') {
-        filterCategory('news');
+      if (window.location.hash) {
+        const initialCat = window.location.hash.replace('#', '');
+        filterCategory(initialCat);
       } else {
-        // 기본 주소(https://chasaungjun.github.io/worldsignal/) 방문 시 카테고리 무관 최신순 6개 자동 나열
         showLatestSixAllCategories();
       }
     });
