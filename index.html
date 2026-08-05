@@ -61,6 +61,17 @@
 
               <article class="post-card" data-category="news">
                 <div class="post-card-image">
+                  <a href="posts/nvidia-earnings-2026/"><img src="assets/img/nvidia-earnings-thumbnail.jpg" alt="NVIDIA Earnings Thumbnail"></a>
+                </div>
+                <h2 class="post-card-title"><a href="posts/nvidia-earnings-2026/">NVIDIA Q1 FY2027 Financial Results: Revenue Hits $81.6 Billion</a></h2>
+                <span class="post-card-author">News</span>
+                <time class="post-card-date" datetime="2026-07-04">July 4, 2026</time>
+                <p class="post-card-excerpt">NVIDIA reports Q1 FY2027 financial results with revenue of $81.6 billion...</p>
+                <p class="post-card-more"><a href="posts/nvidia-earnings-2026/">Read Story →</a></p>
+              </article>
+
+              <article class="post-card" data-category="news">
+                <div class="post-card-image">
                   <a href="posts/sample-post/"><img src="assets/img/thumb-sample.svg" alt="World Signal Introduction"></a>
                 </div>
                 <h2 class="post-card-title"><a href="posts/sample-post/">Welcome to World Signal — Introducing Our English Channel</a></h2>
@@ -68,6 +79,46 @@
                 <time class="post-card-date" datetime="2026-07-04">July 4, 2026</time>
                 <p class="post-card-excerpt">World Signal delivers curated news and stories from Korea...</p>
                 <p class="post-card-more"><a href="posts/sample-post/">Read Story →</a></p>
+              </article>
+
+              <article class="post-card placeholder" aria-hidden="true" data-category="news">
+                <div class="post-card-image">
+                  <img src="assets/img/thumb-placeholder.svg" alt="">
+                </div>
+                <h2 class="post-card-title">Next Story Coming Soon</h2>
+                <span class="post-card-author">World Signal</span>
+                <span class="post-card-date">Upcoming</span>
+                <p class="post-card-excerpt">New stories and insights from Korea will be updated here...</p>
+              </article>
+
+              <article class="post-card placeholder" aria-hidden="true" data-category="news">
+                <div class="post-card-image">
+                  <img src="assets/img/thumb-placeholder.svg" alt="">
+                </div>
+                <h2 class="post-card-title">Next Story Coming Soon</h2>
+                <span class="post-card-author">World Signal</span>
+                <span class="post-card-date">Upcoming</span>
+                <p class="post-card-excerpt">New stories and insights from Korea will be updated here...</p>
+              </article>
+
+              <article class="post-card placeholder" aria-hidden="true" data-category="news">
+                <div class="post-card-image">
+                  <img src="assets/img/thumb-placeholder.svg" alt="">
+                </div>
+                <h2 class="post-card-title">Next Story Coming Soon</h2>
+                <span class="post-card-author">World Signal</span>
+                <span class="post-card-date">Upcoming</span>
+                <p class="post-card-excerpt">New stories and insights from Korea will be updated here...</p>
+              </article>
+
+              <article class="post-card placeholder" aria-hidden="true" data-category="news">
+                <div class="post-card-image">
+                  <img src="assets/img/thumb-placeholder.svg" alt="">
+                </div>
+                <h2 class="post-card-title">Next Story Coming Soon</h2>
+                <span class="post-card-author">World Signal</span>
+                <span class="post-card-date">Upcoming</span>
+                <p class="post-card-excerpt">New stories and insights from Korea will be updated here...</p>
               </article>
 
               <article class="post-card placeholder" aria-hidden="true" data-category="news">
@@ -105,6 +156,10 @@
             <span class="recent-post-date">August 5, 2026</span>
           </li>
           <li>
+            <a href="posts/nvidia-earnings-2026/">NVIDIA Q1 FY2027 Financial Results: Revenue Hits $81.6 Billion</a>
+            <span class="recent-post-date">July 4, 2026</span>
+          </li>
+          <li>
             <a href="posts/sample-post/">Welcome to World Signal — Introducing Our English Channel</a>
             <span class="recent-post-date">July 4, 2026</span>
           </li>
@@ -128,12 +183,44 @@
     </div>
   </footer>
 
-  <!-- ===== 카테고리 필터링 스크립트 ===== -->
+  <!-- ===== 카테고리 필터링 및 6개 게시글 정렬 스크립트 ===== -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const categoryBtns = document.querySelectorAll('.category-btn');
-      const postCards = document.querySelectorAll('.post-card[data-category]');
+      const postGrid = document.querySelector('.post-grid');
+      const realCards = Array.from(document.querySelectorAll('.post-card:not(.placeholder)'));
+      const placeholderCards = Array.from(document.querySelectorAll('.post-card.placeholder'));
 
+      // 게시글을 datetime 속성 기준 내림차순(최신 날짜순)으로 정렬
+      realCards.sort((a, b) => {
+        const dateA = a.querySelector('time')?.getAttribute('datetime') || '';
+        const dateB = b.querySelector('time')?.getAttribute('datetime') || '';
+        return dateB.localeCompare(dateA);
+      });
+
+      // 정렬된 카드들을 post-grid DOM에 재배치
+      realCards.forEach(card => postGrid.appendChild(card));
+      placeholderCards.forEach(card => postGrid.appendChild(card));
+
+      // 메인 홈(카테고리 구분 없음): 빠른 날짜 순으로 최대 6개 게시글(부족 시 플레이스홀더 채움) 나열
+      function showLatestSixAllCategories() {
+        categoryBtns.forEach(btn => btn.classList.remove('active'));
+
+        const allCards = Array.from(document.querySelectorAll('.post-card'));
+        allCards.forEach(card => card.classList.add('is-hidden'));
+
+        // 최신 글 상위 최대 6개 선택
+        const visibleRealCards = realCards.slice(0, 6);
+        visibleRealCards.forEach(card => card.classList.remove('is-hidden'));
+
+        // 6개 중 부족한 수만큼 플레이스홀더 카드로 채우기
+        const neededPlaceholders = 6 - visibleRealCards.length;
+        if (neededPlaceholders > 0) {
+          placeholderCards.slice(0, neededPlaceholders).forEach(card => card.classList.remove('is-hidden'));
+        }
+      }
+
+      // 특정 카테고리(news, ent 등) 필터링
       function filterCategory(category) {
         categoryBtns.forEach(btn => {
           if (btn.getAttribute('data-category') === category) {
@@ -143,9 +230,10 @@
           }
         });
 
-        postCards.forEach(card => {
+        const allCards = Array.from(document.querySelectorAll('.post-card'));
+        allCards.forEach(card => {
           const cardCat = card.getAttribute('data-category');
-          if (category === 'all' || cardCat === category) {
+          if (!card.classList.contains('placeholder') && (category === 'all' || cardCat === category)) {
             card.classList.remove('is-hidden');
           } else {
             card.classList.add('is-hidden');
@@ -160,17 +248,24 @@
           if (cat === 'ent') {
             history.pushState(null, null, './#ent');
             filterCategory('ent');
+          } else if (cat === 'news') {
+            history.pushState(null, null, './#news');
+            filterCategory('news');
           } else {
             history.pushState(null, null, './');
-            filterCategory('news');
+            showLatestSixAllCategories();
           }
         });
       });
 
+      // 페이지 접속 시 초기 동작
       if (window.location.hash === '#ent') {
         filterCategory('ent');
-      } else {
+      } else if (window.location.hash === '#news') {
         filterCategory('news');
+      } else {
+        // 기본 주소(https://chasaungjun.github.io/worldsignal/) 방문 시 카테고리 무관 최신순 6개 자동 나열
+        showLatestSixAllCategories();
       }
     });
   </script>
