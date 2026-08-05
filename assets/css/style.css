@@ -92,11 +92,10 @@ img { max-width: 100%; height: auto; }
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
+/* 마우스 호버 시 효과: 파란색 글씨 + 파란 밑줄 */
 .category-bar a:hover,
-.category-bar a:focus,
-.category-bar a.active {
+.category-bar a:focus {
   color: #4a6cf7 !important;
-  font-weight: 700;
   border-bottom: 3px solid #4a6cf7 !important;
 }
 
