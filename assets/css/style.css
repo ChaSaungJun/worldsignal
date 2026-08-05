@@ -71,7 +71,7 @@ img { max-width: 100%; height: auto; }
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 16px 96px 16px 40px; /* 24px * 4 = 96px padding-right */
+  padding: 16px clamp(12px, 15%, 240px) 16px 40px; /* 최소 12px, 감쇠 비율 15%, 최대 240px */
   gap: 24px;
 }
 
