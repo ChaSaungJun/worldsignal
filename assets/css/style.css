@@ -81,14 +81,12 @@ img { max-width: 100%; height: auto; }
   font-size: 17px;
   font-weight: 500;
   padding-bottom: 4px;
-  transition: color 0.2s, border-color 0.2s;
+  border-bottom: 3px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.category-bar a:hover {
-  color: #4a6cf7;
-}
-
-.category-bar a.active {
+.category-bar a:hover,
+.category-bar a:focus {
   color: #4a6cf7;
   font-weight: 700;
   border-bottom: 3px solid #4a6cf7;
@@ -177,6 +175,12 @@ img { max-width: 100%; height: auto; }
   color: var(--contrast-2);
   margin: 10px 0;
   flex-grow: 1; /* 카드 높이를 맞춰 '계속 읽기'가 바닥에 정렬되도록 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 48px;
 }
 .post-card-more { margin: 0; font-size: 15px; font-weight: 600; }
 
