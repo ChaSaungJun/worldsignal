@@ -71,8 +71,13 @@ img { max-width: 100%; height: auto; }
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 16px clamp(12px, 15%, 240px) 16px 40px; /* 최소 12px, 감쇠 비율 15%, 최대 240px */
+  padding: 16px 0;
   gap: 24px;
+}
+
+/* Ent. (마지막 카테고리 항목) 우측 margin-right 부여 */
+.category-bar a:last-child {
+  margin-right: clamp(48px, 15vw, 240px); /* 뷰포트 폭(vw) 기준: 최소 48px ~ 창 크기에 따라 최대 240px까지 유동 확대 */
 }
 
 .category-bar a {
