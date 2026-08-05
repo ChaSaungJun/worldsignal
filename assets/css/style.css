@@ -71,7 +71,7 @@ img { max-width: 100%; height: auto; }
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 16px 40px;
+  padding: 16px 96px 16px 40px; /* 24px * 4 = 96px padding-right */
   gap: 24px;
 }
 
