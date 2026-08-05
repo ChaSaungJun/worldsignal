@@ -60,6 +60,54 @@ img { max-width: 100%; height: auto; }
 }
 .main-navigation a:hover { color: var(--accent); }
 
+/* ===== 카테고리 탭 (Category Bar) ===== */
+.category-bar-wrap {
+  background: linear-gradient(to right, #eef2ff, #f7f9ff);
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.category-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 16px 40px;
+  gap: 24px;
+}
+
+.category-bar a {
+  text-decoration: none;
+  color: #555555;
+  font-size: 17px;
+  font-weight: 500;
+  padding-bottom: 4px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.category-bar a:hover {
+  color: #4a6cf7;
+}
+
+.category-bar a.active {
+  color: #4a6cf7;
+  font-weight: 700;
+  border-bottom: 3px solid #4a6cf7;
+}
+
+.category-bar .divider {
+  width: 1px;
+  height: 16px;
+  background: #d0d0d0;
+}
+
+@media (max-width: 768px) {
+  .category-bar {
+    justify-content: center;
+    padding: 14px 20px;
+    gap: 16px;
+  }
+}
+
 /* ===== 본문 70% + 사이드바 30% 레이아웃 ===== */
 .site-content {
   display: flex;
