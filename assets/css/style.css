@@ -76,8 +76,9 @@ img { max-width: 100%; height: auto; }
 }
 
 /* 마지막 카테고리 항목 우측 margin-right 부여 (탭 추가에 맞춰 수치 축소 조정) */
-.category-bar a:last-child {
-  margin-right: clamp(32px, 9vw, 150px);
+.category-bar a:last-child,
+.category-bar a:last-of-type {
+  margin-right: clamp(24px, 7vw, 120px) !important;
 }
 
 .category-bar a {

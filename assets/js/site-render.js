@@ -105,12 +105,19 @@
     }
   }
 
-  document.addEventListener('DOMContentLoaded', function() {
+  function init() {
     const rootPrefix = getRootPrefix();
 
     renderHeader(rootPrefix);
     renderCategoryBar(rootPrefix);
     renderSidebarWidget(rootPrefix);
     renderFooterNav(rootPrefix);
-  });
+  }
+
+  // DOM 상태에 따라 즉시 실행 또는 DOMContentLoaded 처리 (이미 로드된 경우 대응)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
