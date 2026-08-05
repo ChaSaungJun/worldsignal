@@ -10,12 +10,13 @@
 <body>
 
   <!-- ===== 상단 헤더 ===== -->
+  <!-- ===== 상단 헤더 ===== -->
   <header class="site-header">
     <div class="inside-header grid-container">
-      <p class="main-title"><a href="index.html">World Signal</a></p>
+      <p class="main-title"><a href="./">World Signal</a></p>
       <nav class="main-navigation" aria-label="기본 메뉴">
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="./">Home</a></li>
           <li><a href="about.html">About</a></li>
         </ul>
       </nav>
@@ -25,9 +26,9 @@
   <!-- ===== 카테고리 탭 ===== -->
   <div class="category-bar-wrap">
     <div class="category-bar grid-container">
-      <a href="index.html">News</a>
+      <a href="./" data-category="news" class="category-btn">News</a>
       <div class="divider"></div>
-      <a href="index.html#ent">Ent.</a>
+      <a href="./#ent" data-category="ent" class="category-btn">Ent.</a>
     </div>
   </div>
 
@@ -47,7 +48,7 @@
             <!-- 게시글 카드 그리드: 새 글을 올릴 때 아래 카드 하나를 복사해서 맨 앞에 추가하세요 -->
             <section class="post-grid">
 
-              <article class="post-card">
+              <article class="post-card" data-category="ent">
                 <div class="post-card-image">
                   <a href="posts/red-velvet-velvet-summer-comeback-2026.html"><img src="https://harvestsciencelab.com/wp-content/uploads/2026/08/step5_thumbnail-3.jpg" alt="Red Velvet Velvet Summer Thumbnail"></a>
                 </div>
@@ -58,7 +59,7 @@
                 <p class="post-card-more"><a href="posts/red-velvet-velvet-summer-comeback-2026.html">Read Story →</a></p>
               </article>
 
-              <article class="post-card">
+              <article class="post-card" data-category="news">
                 <div class="post-card-image">
                   <a href="posts/sample-post.html"><img src="assets/img/thumb-sample.svg" alt="World Signal Introduction"></a>
                 </div>
@@ -69,7 +70,7 @@
                 <p class="post-card-more"><a href="posts/sample-post.html">Read Story →</a></p>
               </article>
 
-              <article class="post-card placeholder" aria-hidden="true">
+              <article class="post-card placeholder" aria-hidden="true" data-category="news">
                 <div class="post-card-image">
                   <img src="assets/img/thumb-placeholder.svg" alt="">
                 </div>
@@ -118,14 +119,61 @@
     <div class="gi-footer">
       <nav aria-label="푸터 메뉴">
         <ul class="gi-footer__list">
-          <li><a href="index.html">홈</a></li>
-          <li><a href="about.html">사이트 소개</a></li>
+          <li><a href="./">Home</a></li>
+          <li><a href="about.html">About</a></li>
         </ul>
       </nav>
       <div class="gi-footer__divider" aria-hidden="true"></div>
       <p class="gi-footer__copyright">© 2026 <strong>World Signal</strong>. All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- ===== 카테고리 필터링 스크립트 ===== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const categoryBtns = document.querySelectorAll('.category-btn');
+      const postCards = document.querySelectorAll('.post-card[data-category]');
+
+      function filterCategory(category) {
+        categoryBtns.forEach(btn => {
+          if (btn.getAttribute('data-category') === category) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+
+        postCards.forEach(card => {
+          const cardCat = card.getAttribute('data-category');
+          if (category === 'all' || cardCat === category) {
+            card.classList.remove('is-hidden');
+          } else {
+            card.classList.add('is-hidden');
+          }
+        });
+      }
+
+      categoryBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          const cat = this.getAttribute('data-category');
+          e.preventDefault();
+          if (cat === 'ent') {
+            history.pushState(null, null, './#ent');
+            filterCategory('ent');
+          } else {
+            history.pushState(null, null, './');
+            filterCategory('news');
+          }
+        });
+      });
+
+      if (window.location.hash === '#ent') {
+        filterCategory('ent');
+      } else {
+        filterCategory('news');
+      }
+    });
+  </script>
 
 </body>
 </html>
