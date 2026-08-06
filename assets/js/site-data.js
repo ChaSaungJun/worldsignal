@@ -28,6 +28,17 @@ window.SITE_DATA = {
   // 게시글 데이터 (날짜순 정렬 및 동적 렌더링에 사용)
   posts: [
     {
+      id: "chzzk-singcup-galaxy-song-contest-2026",
+      title: "Naver’s Chzzk Hosts Streamer Song Competition 'Singcup Galaxy' Ahead of GXG 2026 Finals",
+      path: "posts/chzzk-singcup-galaxy-song-contest-2026/",
+      category: "ent",
+      categoryName: "Ent.",
+      date: "August 6, 2026",
+      datetime: "2026-08-06",
+      thumbnail: "assets/img/chzzk-singcup-galaxy-thumbnail.png",
+      excerpt: "Naver's live streaming platform Chzzk returns with 'Singcup Galaxy', expanding entries to VTubers and group duets with live viewer voting leading to the grand finals at GXG 2026 in Pangyo..."
+    },
+    {
       id: "2026-kwda-lineup-27-artists",
       title: "2026 KWDA Lineup: Key Highlights of the 27 Performing Acts",
       path: "posts/2026-kwda-lineup-27-artists/",
