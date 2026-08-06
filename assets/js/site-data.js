@@ -28,6 +28,17 @@ window.SITE_DATA = {
   // 게시글 데이터 (날짜순 정렬 및 동적 렌더링에 사용)
   posts: [
     {
+      id: "2026-kwda-lineup-27-artists",
+      title: "2026 KWDA Lineup: Key Highlights of the 27 Performing Acts",
+      path: "posts/2026-kwda-lineup-27-artists/",
+      category: "ent",
+      categoryName: "Ent.",
+      date: "August 6, 2026",
+      datetime: "2026-08-06",
+      thumbnail: "assets/img/kwda-2026-lineup-thumbnail.png",
+      excerpt: "2026 K World Dream Awards lineup features 27 acts including ATEEZ, RIIZE, LE SSERAFIM, SeeYa, and Hearts2Hearts..."
+    },
+    {
       id: "red-velvet-velvet-summer-comeback-2026",
       title: "Red Velvet Tops Charts with Comeback: Changes More Surprising Than Numbers",
       path: "posts/red-velvet-velvet-summer-comeback-2026/",
