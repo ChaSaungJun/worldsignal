@@ -105,6 +105,96 @@
     }
   }
 
+  // 함께 보면 좋은 글 (Related Posts) 동적 렌더링 (사전 정의 태그 매칭 -> 카테고리 매칭 -> 최신순)
+  function renderRelatedPosts(rootPrefix) {
+    const section = document.getElementById('related-posts-section');
+    const container = document.getElementById('related-posts-container');
+    if (!section || !container || !window.SITE_DATA || !window.SITE_DATA.posts) return;
+
+    // 현재 페이지 경로 파악 및 포스트 매칭
+    const pathName = window.location.pathname;
+    let currentPost = window.SITE_DATA.posts.find(p => {
+      return pathName.includes(p.id) || pathName.includes(p.path.replace(/\/$/, ''));
+    });
+
+    // 경로 매칭 실패 시 fallback (예: sample-post 기본 매칭)
+    if (!currentPost && pathName.includes('posts/')) {
+      const parts = pathName.split('/').filter(Boolean);
+      const lastFolder = parts[parts.length - 1];
+      currentPost = window.SITE_DATA.posts.find(p => p.id === lastFolder);
+    }
+
+    if (!currentPost) {
+      section.style.display = 'none';
+      return;
+    }
+
+    const allowedTags = window.SITE_DATA.allowedTags || [];
+    const currentTags = (currentPost.tags || []).filter(t => allowedTags.includes(t));
+    const currentCategory = currentPost.category;
+
+    // 점수 계산 및 후보 포스트 필터링
+    const scoredPosts = window.SITE_DATA.posts
+      .filter(p => p.id !== currentPost.id)
+      .map(p => {
+        const postTags = (p.tags || []).filter(t => allowedTags.includes(t));
+        const overlapCount = postTags.filter(t => currentTags.includes(t)).length;
+        const isSameCategory = (p.category === currentCategory);
+
+        // 태그 1개 일치 당 10점, 동일 카테고리 3점
+        const score = (overlapCount * 10) + (isSameCategory ? 3 : 0);
+
+        return { post: p, score, datetime: p.datetime || '' };
+      })
+      .filter(item => item.score > 0)
+      .sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        return b.datetime.localeCompare(a.datetime);
+      });
+
+    // 추천 관련 글 0개일 경우 영역 완전히 숨김
+    if (scoredPosts.length === 0) {
+      section.style.display = 'none';
+      return;
+    }
+
+    // 3~5개 선별 (최대 5개)
+    const selected = scoredPosts.slice(0, 5);
+
+    container.innerHTML = '';
+    selected.forEach(item => {
+      const p = item.post;
+      const card = document.createElement('article');
+      card.className = 'related-post-card';
+
+      // 썸네일 URL 처리
+      let thumbUrl = p.thumbnail || '';
+      if (thumbUrl && !thumbUrl.startsWith('http://') && !thumbUrl.startsWith('https://')) {
+        thumbUrl = rootPrefix + thumbUrl;
+      }
+
+      const postHref = rootPrefix + p.path;
+
+      // 표준 <a href="...">를 포함한 크롤러 수집 가용성 최적화 구조
+      card.innerHTML = `
+        <a href="${postHref}" class="related-post-card-link" aria-label="${p.title}">
+          <div class="related-post-thumb">
+            ${thumbUrl ? `<img src="${thumbUrl}" alt="${p.title}" loading="lazy">` : `<div class="related-post-noimg">No Image</div>`}
+          </div>
+          <div class="related-post-body">
+            <span class="related-post-cat">${p.categoryName || p.category}</span>
+            <h4 class="related-post-title">${p.title}</h4>
+            <span class="related-post-date">${p.date || ''}</span>
+          </div>
+        </a>
+      `;
+
+      container.appendChild(card);
+    });
+
+    section.style.display = 'block';
+  }
+
   function init() {
     const rootPrefix = getRootPrefix();
 
@@ -112,6 +202,7 @@
     renderCategoryBar(rootPrefix);
     renderSidebarWidget(rootPrefix);
     renderFooterNav(rootPrefix);
+    renderRelatedPosts(rootPrefix);
   }
 
   // DOM 상태에 따라 즉시 실행 또는 DOMContentLoaded 처리 (이미 로드된 경우 대응)

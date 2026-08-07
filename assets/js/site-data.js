@@ -25,6 +25,20 @@ window.SITE_DATA = {
     { title: "About", path: "about/" }
   ],
 
+  // 허용된 태그 사전 (사전 정의된 목록 내에서만 선택하여 동종 주제 매칭에 활용)
+  allowedTags: [
+    "k-pop",
+    "k-drama",
+    "culture",
+    "gaming",
+    "music-awards",
+    "tech",
+    "society",
+    "policy",
+    "streaming",
+    "comeback"
+  ],
+
   // 게시글 데이터 (날짜순 정렬 및 동적 렌더링에 사용)
   posts: [
     {
@@ -33,6 +47,7 @@ window.SITE_DATA = {
       path: "posts/chzzk-singcup-galaxy-song-contest-2026/",
       category: "ent",
       categoryName: "Ent.",
+      tags: ["gaming", "streaming", "music-awards"],
       date: "August 6, 2026",
       datetime: "2026-08-06",
       thumbnail: "assets/img/chzzk-singcup-galaxy-thumbnail.png",
@@ -44,6 +59,7 @@ window.SITE_DATA = {
       path: "posts/2026-kwda-lineup-27-artists/",
       category: "ent",
       categoryName: "Ent.",
+      tags: ["k-pop", "music-awards"],
       date: "August 6, 2026",
       datetime: "2026-08-06",
       thumbnail: "assets/img/kwda-2026-lineup-thumbnail.png",
@@ -55,6 +71,7 @@ window.SITE_DATA = {
       path: "posts/red-velvet-velvet-summer-comeback-2026/",
       category: "ent",
       categoryName: "Ent.",
+      tags: ["k-pop", "comeback"],
       date: "August 5, 2026",
       datetime: "2026-08-05",
       thumbnail: "https://harvestsciencelab.com/wp-content/uploads/2026/08/step5_thumbnail-3.jpg",
@@ -66,6 +83,7 @@ window.SITE_DATA = {
       path: "posts/sample-post/",
       category: "news",
       categoryName: "News",
+      tags: ["culture", "society"],
       date: "July 4, 2026",
       datetime: "2026-07-04",
       thumbnail: "assets/img/thumb-sample.svg",
