@@ -42,6 +42,18 @@ window.SITE_DATA = {
   // 게시글 데이터 (날짜순 정렬 및 동적 렌더링에 사용)
   posts: [
     {
+      id: "hwasa-jensen-huang-handwritten-letter-2026",
+      title: "Hwasa Reveals Story Behind Handwritten Letter to NVIDIA CEO Jensen Huang: The Unexpected Backstory",
+      path: "posts/hwasa-jensen-huang-handwritten-letter-2026/",
+      category: "ent",
+      categoryName: "Ent.",
+      tags: ["k-pop", "tech"],
+      date: "August 9, 2026",
+      datetime: "2026-08-09",
+      thumbnail: "assets/img/hwasa-jensen-huang-handwritten-letter-thumbnail.png",
+      excerpt: "K-pop star Hwasa reveals the story behind her handwritten letter to NVIDIA CEO Jensen Huang following his praise of her songs 'Good Goodbye' and 'So Cute'..."
+    },
+    {
       id: "chzzk-singcup-galaxy-song-contest-2026",
       title: "Naver’s Chzzk Hosts Streamer Song Competition 'Singcup Galaxy' Ahead of GXG 2026 Finals",
       path: "posts/chzzk-singcup-galaxy-song-contest-2026/",
