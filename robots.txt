@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://chasaungjun.github.io/worldsignal/sitemap.xml
+Sitemap: https://chasaungjun.github.io/sitemap_index.xml
