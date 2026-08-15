@@ -42,6 +42,18 @@ window.SITE_DATA = {
   // 게시글 데이터 (날짜순 정렬 및 동적 렌더링에 사용)
   posts: [
     {
+      id: "bill-gates-korea-visit-terrapower-smr-2026",
+      title: "Why Bill Gates Came to Korea: AI Power Surge and the Critical Role of Korean Supply Chains in TerraPower's SMR Strategy",
+      path: "posts/bill-gates-korea-visit-terrapower-smr-2026/",
+      category: "news",
+      categoryName: "News",
+      tags: ["tech", "policy", "society"],
+      date: "August 15, 2026",
+      datetime: "2026-08-15",
+      thumbnail: "assets/img/bill-gates-korea-visit-smr-thumbnail.png",
+      excerpt: "TerraPower founder Bill Gates visited South Korea to solidify next-generation SMR supply chain partnerships with SK, HD Hyundai, Doosan Enerbility, and KHNP amid surging AI energy demand..."
+    },
+    {
       id: "hwasa-jensen-huang-handwritten-letter-2026",
       title: "Hwasa Reveals Story Behind Handwritten Letter to NVIDIA CEO Jensen Huang: The Unexpected Backstory",
       path: "posts/hwasa-jensen-huang-handwritten-letter-2026/",
