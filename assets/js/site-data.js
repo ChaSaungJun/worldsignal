@@ -42,11 +42,23 @@ window.SITE_DATA = {
   // 게시글 데이터 (날짜순 정렬 및 동적 렌더링에 사용)
   posts: [
     {
+      id: "bigbang-20th-anniversary-biiig-comeback-2026",
+      title: "BIGBANG Marks 20th Anniversary with Comeback Single 'BiiiG', City-Scale Jamsil Festivities, and Global Stadium World Tour",
+      path: "posts/bigbang-20th-anniversary-biiig-comeback-2026/",
+      category: "ent",
+      categoryName: "Ent.",
+      tags: ["k-pop", "comeback", "culture"],
+      date: "August 21, 2026",
+      datetime: "2026-08-21",
+      thumbnail: "assets/img/bigbang-20th-anniversary-biiig-thumbnail.png",
+      excerpt: "BIGBANG marks their 20th anniversary with the chart-topping new single 'BiiiG', city-scale celebrations across Jamsil, and the launch of their 33-show 'XX : COSMOS' stadium world tour..."
+    },
+    {
       id: "bill-gates-korea-visit-terrapower-smr-2026",
       title: "Why Bill Gates Came to Korea: AI Power Surge and the Critical Role of Korean Supply Chains in TerraPower's SMR Strategy",
       path: "posts/bill-gates-korea-visit-terrapower-smr-2026/",
-      category: "news",
-      categoryName: "News",
+      category: "ent",
+      categoryName: "Ent.",
       tags: ["tech", "policy", "society"],
       date: "August 15, 2026",
       datetime: "2026-08-15",

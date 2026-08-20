@@ -454,3 +454,29 @@ img { max-width: 100%; height: auto; }
   margin-top: auto;
 }
 
+/* ===== Post Entry Tags ===== */
+.entry-tags {
+  margin: 36px 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.entry-tags .tag-item {
+  display: inline-block;
+  padding: 5px 12px;
+  background: #f1f5f9;
+  color: #2563eb;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.entry-tags .tag-item:hover {
+  background: #e0e7ff;
+  color: #1d4ed8;
+}
+
